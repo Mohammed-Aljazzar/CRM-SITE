@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="col-md-6 offset-md-3">
+
+<div style="background-color:rgba(189, 189, 189, 0.8); padding: 40px;margin-bottom: 20px;border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <h3 class="text-dark text-left mb-2" style="font-family: arial;">Create your account</h3>
+     <p>Start managing your clients today!</p>
+    <hr style="background: black;height: 1px; margin-bottom: 30px;">
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {% if form.errors %}
+        <div role="alert" class="alert alert-warning alert-dismissible fade show">
+            Your Form Has Errors
+            {% for field in form  %}
+                {% if field.errors %}
+                    {{field.errors}}
+                {% endif %}
+            {% endfor %}    
+            <button class="btn-close" data-bs-dismiss="alert" aria-label="Close" type="button"></button>
+        </div>
+    {% endif %}
+
+       {{form.as_p}}
+        <button type="submit" class="btn btn-primary" style=" background-color: black; color:white">Register</button>
+    <br><br>
+    <p class="text-center text-dark  mb-0" >Already have an account? <a href="{% url 'website:home'%}" style="text-decoration: none;">Sign In</a> </p>
+ 
+</form>
+</div>
+</div>
+{% endblock%}
+
+
+
+
+
+
+

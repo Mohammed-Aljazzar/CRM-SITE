@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+{% block content%}
+
+<table class="table table-striped table-hover  table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Zipcode</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if results %}
+            {% for result in results %}
+                <tr>
+                    <td>{{result.id}}</td>
+                    <td>{{result.first_name}}</td>
+                    <td>{{result.last_name}}</td>
+                    <td>{{result.email}}</td>
+                    <td>{{result.phone}}</td>
+                    <td>{{result.address}}</td>
+                    <td>{{result.city}}</td>
+                    <td>{{result.state}}</td>
+                    <td>{{result.created_at| date:"Y M d"}}</td>
+                    <td>{{result.zipcode}}</td>
+                    <td><a href="{% url 'website:customer_record' result.id %}" class="fa-solid fa-eye text-secondary" style="color:black; text-decoration: none;"></a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <td colspan="11" class="text-center p-3" style="background-color: #fef2cc;">
+           <span style="font-weight: 500; font-size:large;"> Not Found "{{query}}"</span>
+        </td>
+        {% endif %}
+            
+    </tbody>
+
+
+
+</table>
+<a href="{% url 'website:home' %}" class="btn btn-dark mt-3"><i class="fa fa-fas fa-arrow-left"></i> Back</a>
+
+
+{% endblock %}

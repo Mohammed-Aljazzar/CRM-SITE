@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="col-md-6 offset-md-3">
+    <div style="background-color:rgba(189, 189, 189, 0.8); padding: 40px;margin-bottom: 20px;border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+
+    <h2 style="color: black; font-family: arial;">Update Record</h2>
+     <p>Start editing this record</p>
+     <hr style="height: 1px; color: black;">
+    <br> 
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {{form.as_p}}
+        <a href="{% url 'website:home' %}" class="btn btn-secondary" ><i class="fa fa-fas fa-arrow-left"></i> Back</a>
+        <button type="submit" class="btn btn-primary" style=" background-color: black; color:white">Update Record</button>
+        <br>
+        <br>
+    </form>
+</div>
+</div>
+{% endblock%}

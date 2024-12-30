@@ -1,0 +1,37 @@
+{% load static%}
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">CRM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="display: flex;align-items: center;">
+          
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'website:home' %}">Dashboard <i class="fa fa-home"></i></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'website:logout' %}">Sign Out <i class="fa fa-fas fa-sign-out-alt"></i></a>
+          </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'website:register'%}">Register <i class="fa fa-fas fa-key"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'website:home'%}">Login <i class="fa fa-fas fa-sign-out-alt"></i></a>
+            </li>
+          {% endif%}
+
+        </ul>
+        {% if user.is_authenticated %}
+        <ul style="color: white; list-style: none; font-size:medium;display: flex;align-items: center;">
+          <a href="{% url 'website:profile'%}" style="text-decoration: none;"><li style="color: white;" class="text-warning">{{request.user.username|capfirst}} <i class="fa fa-fas fa-user-circle" style="font-size: 24px; margin-left: 6px; margin-top: 10px;"></i></li></a>
+        </ul>
+        {%endif%}
+        
+      </div>
+      
+    </div>
+  </nav>

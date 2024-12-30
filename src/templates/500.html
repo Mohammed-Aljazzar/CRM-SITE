@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="text-center mt-3" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-80%);">
+<h1 style="color: black;">500 - Server Error</h1>
+<h3 style="color: black;">Oops! Something went wrong on our end. Please try again later.</h3>
+<a href="{% url 'website:home' %}" class="btn btn-dark mt-3">Return to Dashboard</a>
+</div>
+
+{% endblock %}
+    
+
+

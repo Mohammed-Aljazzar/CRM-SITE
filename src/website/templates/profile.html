@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% block content%}
+<h3 class="text-dark mt-5">Hello <span class="text-warning">{{user.username}}</span>, Welcome to your profile</h3>
+<div class="mt-5">
+ <div class="card p-4">
+    <h4 class="text-dark">These are all the functions available, {{user.username}}, in your CRM</h4>
+    <div class="d-flex ">
+        {% if request.user.is_superuser%}
+        <a href="{% url 'website:add_record'%}" class="btn btn-dark d-block mt-3 mb-3 mr-3 " style="width: 150px;margin-right: 20px">Add Record</a>
+        {% endif%}
+     
+        <a href="{% url 'website:logout'%}" class="btn btn-secondary d-block mt-3 mb-3" style="width: 150px;">Logout</a>
+    
+    </div>
+    
+    {% comment %} <h4>Record Number: {{user.record.count()}}</h4> {% endcomment %}
+ </div>
+ <a href="{% url 'website:home' %}" class="btn btn-secondary mt-5" ><i class="fa fa-fas fa-arrow-left"></i> Back</a>
+
+</div>
+
+
+
+{% endblock %}
